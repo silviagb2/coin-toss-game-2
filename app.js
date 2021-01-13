@@ -1,23 +1,22 @@
 $(document).ready(function(){
-    
+
 //Punts de partida
 var playerScore = 0
 var computerScore = 0
 var randomCoin
 var random
 
-$("#heads").click (function() {
-    $("#player-selection").text("heads")
-    $("#player-selection").css("color", "green");
-    computerSelection()
-    tailsOrHeads()
-    score()
-    winner()
-})
+$("button").click(function(e){
+    let playerSelection = e.target.id
+    $("#player-selection").text(playerSelection)
 
-$("#tails").click (function() {
-    $("#player-selection").text("tails")
-    $("#player-selection").css("color", "blue");
+    if (playerSelection === "heads"){
+        $("#player-selection").css("color", "green");
+    }
+    if (playerSelection === "tails"){
+        $("#player-selection").css("color", "blue");
+    }
+
     computerSelection()
     tailsOrHeads()
     score()
@@ -64,7 +63,6 @@ function winner(){
     if (playerScore === 5){
         $("#winner").text("You Win!!!")
     }
-
     if(computerScore === 5 && playerScore === 5){
         $("#winner").text("It's a Tie!!!")
     }
